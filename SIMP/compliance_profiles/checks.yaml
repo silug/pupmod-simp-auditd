@@ -67,7 +67,6 @@ checks:
       - CCI-000135
     oval-ids:
     - bootloader_audit_argument
-    - bootloader_audit_argument
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.simp.audit_attr:
     settings:
       parameter: auditd::config::audit_profiles::simp::audit_attr
@@ -469,7 +468,6 @@ checks:
       - CCI-000126
     oval-ids:
     - service_auditd_enabled
-    - service_auditd_enabled
   oval:com.puppet.forge.simp.auditd.failure_mode:
     settings:
       parameter: auditd::failure_mode
@@ -641,7 +639,6 @@ checks:
     oval-ids:
     - auditd_audispd_syslog_plugin_activated
     - xccdf_org:ssgproject:content_rule_auditd_audispd_syslog_plugin_activated
-    - auditd_audispd_syslog_plugin_activated
   oval:com.puppet.forge.simp.auditd.default_audit_profile.el6:
     settings:
       parameter: auditd::default_audit_profile
