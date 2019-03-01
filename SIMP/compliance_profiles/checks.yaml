@@ -29,6 +29,8 @@ checks:
       - AU-4
       - AU-5:b
       - AU-11
+    oval-ids:
+    - auditd_data_retention_admin_space_left_action
   oval:com.puppet.forge.simp.auditd.at_boot:
     settings:
       parameter: auditd::at_boot
@@ -63,6 +65,9 @@ checks:
       - SRG-OS-000042-GPOS-00020
       - CCI-002234
       - CCI-000135
+    oval-ids:
+    - bootloader_audit_argument
+    - bootloader_audit_argument
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.simp.audit_attr:
     settings:
       parameter: auditd::config::audit_profiles::simp::audit_attr
@@ -73,6 +78,19 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - AU-2
+    oval-ids:
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fremovexattr
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fsetxattr
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lremovexattr
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lsetxattr
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_removexattr
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_setxattr
+    - audit_rules_dac_modification_fremovexattr
+    - audit_rules_dac_modification_fsetxattr
+    - audit_rules_dac_modification_lremovexattr
+    - audit_rules_dac_modification_lsetxattr
+    - audit_rules_dac_modification_removexattr
+    - audit_rules_dac_modification_setxattr
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.simp.audit_cfg_cron:
     settings:
       parameter: auditd::config::audit_profiles::simp::audit_cfg_cron
@@ -153,6 +171,13 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - AU-2
+    oval-ids:
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_chmod
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmod
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmodat
+    - audit_rules_dac_modification_chmod
+    - audit_rules_dac_modification_fchmod
+    - audit_rules_dac_modification_fchmodat
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.simp.audit_chown:
     settings:
       parameter: auditd::config::audit_profiles::simp::audit_chown
@@ -163,6 +188,15 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - AU-2
+    oval-ids:
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_chown
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchown
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchownat
+    - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lchown
+    - audit_rules_dac_modification_chown
+    - audit_rules_dac_modification_fchown
+    - audit_rules_dac_modification_fchownat
+    - audit_rules_dac_modification_lchown
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.simp.audit_grub:
     settings:
       parameter: auditd::config::audit_profiles::simp::audit_grub
@@ -433,6 +467,9 @@ checks:
       - SRG-OS-000254-GPOS-00095
       - SRG-OS-000255-GPOS-00096
       - CCI-000126
+    oval-ids:
+    - service_auditd_enabled
+    - service_auditd_enabled
   oval:com.puppet.forge.simp.auditd.failure_mode:
     settings:
       parameter: auditd::failure_mode
@@ -465,6 +502,8 @@ checks:
       nist_800_53_rev4:
       - AU-4
       - AU-11
+    oval-ids:
+    - auditd_data_retention_max_log_file
   oval:com.puppet.forge.simp.auditd.num_logs:
     settings:
       parameter: auditd::num_logs
@@ -477,6 +516,8 @@ checks:
       nist_800_53_rev4:
       - AU-4
       - AU-11
+    oval-ids:
+    - auditd_data_retention_space_left_action
   oval:com.puppet.forge.simp.auditd.package_name:
     settings:
       parameter: auditd::package_name
@@ -597,6 +638,50 @@ checks:
       - RHEL-07-030770
       - SRG-OS-000480-GPOS-00227
       - CCI-000366
+    oval-ids:
+    - auditd_audispd_syslog_plugin_activated
+    - xccdf_org:ssgproject:content_rule_auditd_audispd_syslog_plugin_activated
+    - auditd_audispd_syslog_plugin_activated
+  oval:com.puppet.forge.simp.auditd.default_audit_profile.el6:
+    settings:
+      parameter: auditd::default_audit_profile
+      value: simp
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AU-2:a: true
+      nist_800_53_rev4:AU-2:c: true
+      nist_800_53_rev4:AU-2:d: true
+      nist_800_53_rev4:AC-6:9: true
+      nist_800_53_rev4:AU-12:a: true
+      nist_800_53_rev4:AU-12:c: true
+    identifiers:
+      nist_800_53_rev4:
+      - AU-2:a
+      - AU-2:c
+      - AU-2:d
+      - AC-6:9
+      - AU-12:a
+      - AU-12:c
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
+  oval:com.puppet.forge.simp.auditd.space_left_action.el6:
+    settings:
+      parameter: auditd::space_left_action
+      value: SYSLOG
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AU-4: true
+      nist_800_53_rev4:AU-5:a: true
+      nist_800_53_rev4:AU-11: true
+    identifiers:
+      nist_800_53_rev4:
+      - AU-4
+      - AU-5:a
+      - AU-11
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
   oval:com.puppet.forge.simp.auditd.action_mail_acct:
     settings:
       parameter: auditd::action_mail_acct
@@ -615,6 +700,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - auditd_data_retention_action_mail_acct
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_attr:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_attr
@@ -652,6 +739,12 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lsetxattr
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_removexattr
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_setxattr
+    - audit_rules_dac_modification_fremovexattr
+    - audit_rules_dac_modification_fsetxattr
+    - audit_rules_dac_modification_lremovexattr
+    - audit_rules_dac_modification_lsetxattr
+    - audit_rules_dac_modification_removexattr
+    - audit_rules_dac_modification_setxattr
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_attr_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_attr_tag
@@ -689,6 +782,12 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lsetxattr
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_removexattr
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_setxattr
+    - audit_rules_dac_modification_fremovexattr
+    - audit_rules_dac_modification_fsetxattr
+    - audit_rules_dac_modification_lremovexattr
+    - audit_rules_dac_modification_lsetxattr
+    - audit_rules_dac_modification_removexattr
+    - audit_rules_dac_modification_setxattr
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_cfg_sudoers:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_cfg_sudoers
@@ -713,6 +812,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - audit_rules_sysadmin_actions
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_cfg_sudoers_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_cfg_sudoers_tag
@@ -765,6 +866,9 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_chmod
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmod
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmodat
+    - audit_rules_dac_modification_chmod
+    - audit_rules_dac_modification_fchmod
+    - audit_rules_dac_modification_fchmodat
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_chmod_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_chmod_tag
@@ -793,6 +897,9 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_chmod
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmod
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchmodat
+    - audit_rules_dac_modification_chmod
+    - audit_rules_dac_modification_fchmod
+    - audit_rules_dac_modification_fchmodat
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_chown:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_chown
@@ -826,6 +933,10 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchown
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchownat
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lchown
+    - audit_rules_dac_modification_chown
+    - audit_rules_dac_modification_fchown
+    - audit_rules_dac_modification_fchownat
+    - audit_rules_dac_modification_lchown
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_chown_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_chown_tag
@@ -859,6 +970,10 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchown
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_fchownat
     - xccdf_org:ssgproject:content_rule_audit_rules_dac_modification_lchown
+    - audit_rules_dac_modification_chown
+    - audit_rules_dac_modification_fchown
+    - audit_rules_dac_modification_fchownat
+    - audit_rules_dac_modification_lchown
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_crontab_cmd:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_crontab_cmd
@@ -937,6 +1052,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - audit_rules_kernel_module_loading
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_kernel_modules_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_kernel_modules_tag
@@ -1062,6 +1179,9 @@ checks:
     oval-ids:
     - xccdf_org:ssgproject:content_rule_audit_rules_login_events_faillock
     - xccdf_org:ssgproject:content_rule_audit_rules_login_events_tallylog
+    - audit_rules_login_events_faillock
+    - audit_rules_login_events_tallylog
+    - audit_rules_login_events
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_login_files_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_login_files_tag
@@ -1089,6 +1209,8 @@ checks:
     oval-ids:
     - xccdf_org:ssgproject:content_rule_audit_rules_login_events_faillock
     - xccdf_org:ssgproject:content_rule_audit_rules_login_events_tallylog
+    - audit_rules_login_events_faillock
+    - audit_rules_login_events_tallylog
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_mount:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_mount
@@ -1109,6 +1231,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - audit_rules_media_export
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_mount_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_mount_tag
@@ -1389,6 +1513,12 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_unlinkat
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_rename
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_renameat
+    - audit_rules_file_deletion_events_rmdir
+    - audit_rules_file_deletion_events_unlink
+    - audit_rules_file_deletion_events_unlinkat
+    - audit_rules_file_deletion_events_rename
+    - audit_rules_file_deletion_events_renameat
+    - audit_rules_file_deletion_events
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_rename_remove_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_rename_remove_tag
@@ -1425,6 +1555,12 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_unlinkat
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_rename
     - xccdf_org:ssgproject:content_rule_audit_rules_file_deletion_events_renameat
+    - audit_rules_file_deletion_events_rmdir
+    - audit_rules_file_deletion_events_unlink
+    - audit_rules_file_deletion_events_unlinkat
+    - audit_rules_file_deletion_events_rename
+    - audit_rules_file_deletion_events_renameat
+    - audit_rules_file_deletion_events
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_selinux_cmds:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_selinux_cmds
@@ -1557,6 +1693,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - audit_rules_privileged_commands
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_unsuccessful_file_operations:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_unsuccessful_file_operations
@@ -1596,6 +1734,13 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_open_by_handle_at
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_truncate
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_ftruncate
+    - audit_rules_unsuccessful_file_modification_creat
+    - audit_rules_unsuccessful_file_modification_open
+    - audit_rules_unsuccessful_file_modification_openat
+    - audit_rules_unsuccessful_file_modification_open_by_handle_at
+    - audit_rules_unsuccessful_file_modification_truncate
+    - audit_rules_unsuccessful_file_modification_ftruncate
+    - audit_rules_unsuccessful_file_modification
   oval:com.puppet.forge.simp.auditd.config.audit_profiles.stig.audit_unsuccessful_file_operations_tag:
     settings:
       parameter: auditd::config::audit_profiles::stig::audit_unsuccessful_file_operations_tag
@@ -1635,6 +1780,13 @@ checks:
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_open_by_handle_at
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_truncate
     - xccdf_org:ssgproject:content_rule_audit_rules_unsuccessful_file_modification_ftruncate
+    - audit_rules_unsuccessful_file_modification_creat
+    - audit_rules_unsuccessful_file_modification_open
+    - audit_rules_unsuccessful_file_modification_openat
+    - audit_rules_unsuccessful_file_modification_open_by_handle_at
+    - audit_rules_unsuccessful_file_modification_truncate
+    - audit_rules_unsuccessful_file_modification_ftruncate
+    - audit_rules_unsuccessful_file_modification
   oval:com.puppet.forge.simp.auditd.default_audit_profile:
     settings:
       parameter: auditd::default_audit_profile
@@ -1686,6 +1838,8 @@ checks:
     confine:
       osfamily: RedHat
       operatingsystemmajrelease: '7'
+    oval-ids:
+    - auditd_data_retention_space_left_action
   oval:com.puppet.forge.simp.auditd.default_audit_profile.nist_800_53_rev4:
     settings:
       parameter: auditd::default_audit_profile
@@ -1706,6 +1860,9 @@ checks:
       - AC-6:9
       - AU-12:a
       - AU-12:c
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
   oval:com.puppet.forge.simp.auditd.space_left_action.nist_800_53_rev4:
     settings:
       parameter: auditd::space_left_action
@@ -1720,3 +1877,8 @@ checks:
       - AU-4
       - AU-5:a
       - AU-11
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
+    oval-ids:
+    - auditd_data_retention_space_left_action
